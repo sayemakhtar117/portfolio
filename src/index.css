@@ -183,6 +183,7 @@ button {
   align-items: center;
   gap: 20px;
   padding: 22px 12px 0;
+  position: relative;
 }
 
 .landing-brand {
@@ -204,6 +205,46 @@ button {
 .landing-nav a {
   color: rgba(233, 238, 246, 0.8);
   text-decoration: none;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-toggle span {
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.mobile-menu-toggle span:nth-child(1) { top: 15px; }
+.mobile-menu-toggle span:nth-child(2) { top: 22px; }
+.mobile-menu-toggle span:nth-child(3) { top: 29px; }
+
+.mobile-menu-toggle.is-open span:nth-child(1) {
+  top: 22px;
+  transform: rotate(45deg);
+}
+
+.mobile-menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.is-open span:nth-child(3) {
+  top: 22px;
+  transform: rotate(-45deg);
 }
 
 .primary-pill {
@@ -475,11 +516,96 @@ button {
   }
 }
 
+@media (max-width: 990px) and (max-height: 480px) {
+  /* Stack the landing content so we can control the order of CTAs and polka dots
+     specifically for narrow portrait viewports. */
+  .landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .landing-hero-panel .cta-row {
+    order: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .polka-dots {
+    /* ensure the dots are placed below the CTAs and not shifted by left/bottom
+       offsets that affect other breakpoints */
+    order: 2;
+    position: static;
+    margin-top: 14px;
+    margin-left: 8px;
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
+  .landing-topbar {
+    padding: 18px 18px 0;
+    align-items: center;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .landing-nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 16px;
+    left: 16px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 18px;
+    background: rgba(15, 22, 32, 0.96);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 24px 40px -24px rgba(3, 7, 18, 0.9);
+    z-index: 10;
+  }
+
+  .landing-nav.is-open {
+    display: flex;
+  }
+
+  .landing-nav a {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .landing-nav .primary-pill {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .landing-content {
+    padding: 28px 18px 0;
+  }
+
+  .landing-title {
+    font-size: 2.8rem;
+  }
+
+  .landing-copy {
+    font-size: 0.97rem;
+  }
+
+  .landing-hero-panel {
+    min-height: 530px;
+  }
+}
+
 @media (max-width: 560px) {
   .landing-topbar {
     padding: 18px 18px 0;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .landing-nav {
@@ -549,6 +675,46 @@ button {
   font-size: 0.96rem;
 }
 
+.page-nav-toggle {
+  display: none;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  padding: 0;
+}
+
+.page-nav-toggle span {
+  position: absolute;
+  left: 11px;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.page-nav-toggle span:nth-child(1) { top: 14px; }
+.page-nav-toggle span:nth-child(2) { top: 20px; }
+.page-nav-toggle span:nth-child(3) { top: 26px; }
+
+.page-nav-toggle.is-open span:nth-child(1) {
+  top: 20px;
+  transform: rotate(45deg);
+}
+
+.page-nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.page-nav-toggle.is-open span:nth-child(3) {
+  top: 20px;
+  transform: rotate(-45deg);
+}
+
 .about-icon-button {
   width: 30px;
   height: 30px;
@@ -560,6 +726,50 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .about-topbar {
+    position: relative;
+    align-items: center;
+    padding: 18px 16px;
+  }
+
+  .page-nav-toggle {
+    display: block;
+  }
+
+  .about-links {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 16px;
+    left: 16px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 18px;
+    background: rgba(15, 22, 32, 0.96);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 24px 40px -24px rgba(3, 7, 18, 0.9);
+    z-index: 25;
+  }
+
+  .about-links.is-open {
+    display: flex;
+  }
+
+  .about-links a {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .about-icon-button {
+    align-self: flex-start;
+    margin-left: 6px;
+  }
 }
 
 .about-main {
