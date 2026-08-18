@@ -1,17 +1,33 @@
+import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 export default function HeroSection() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <header className="landing-hero-shell">
       <div className="landing-hero-panel">
         <div className="landing-topbar">
           <div className="landing-brand">Sayem A.</div>
-          <nav className="landing-nav" aria-label="Main navigation">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/experience">Experience</NavLink>
-            <NavLink to="/skills">Skills</NavLink>
-            <NavLink to="/certifications">Certs</NavLink>
-            <NavLink to="/contact" className="primary-pill">Contact</NavLink>
+
+          <button
+            type="button"
+            className={`mobile-menu-toggle ${menuOpen ? 'is-open' : ''}`}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          <nav className={`landing-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
+            <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
+            <NavLink to="/experience" onClick={() => setMenuOpen(false)}>Experience</NavLink>
+            <NavLink to="/skills" onClick={() => setMenuOpen(false)}>Skills</NavLink>
+            <NavLink to="/certifications" onClick={() => setMenuOpen(false)}>Certs</NavLink>
+            <NavLink to="/contact" className="primary-pill" onClick={() => setMenuOpen(false)}>Contact</NavLink>
           </nav>
         </div>
 

@@ -1,23 +1,22 @@
-import { NavLink, Link } from 'react-router-dom'
+import PageNav from './PageNav'
 import { skills } from '../data/skillsData'
 
 export default function SkillsSection() {
+  const links = [
+    { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
+    { to: '/experience', label: 'Experience' },
+    { to: '/certifications', label: 'Certifications' },
+    { to: '/contact', label: 'Contact' }
+  ]
+
   return (
     <section className="about-page-shell">
       <div className="about-page-panel">
         <header className="about-topbar">
           <div className="about-brand">Sayem A.</div>
 
-          <nav className="about-links" aria-label="Skills page navigation">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/experience">Experience</NavLink>
-            <NavLink to="/certifications">Certifications</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
-            <Link to="/contact" className="about-icon-button" aria-label="Contact">
-              <span>✉</span>
-            </Link>
-          </nav>
+          <PageNav links={links} />
         </header>
 
         <main className="about-main">
