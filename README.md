@@ -86,12 +86,12 @@ paths, depending on whether you want to spend anything on that:
 ### Option A — you already own a domain (or don't mind buying one)
 
 1. In your DNS provider's dashboard, add:
-   - For an apex domain (`sayemakhtar.dev`): four `A` records pointing to
+   - For an apex domain (`developer.dev`): four `A` records pointing to
      GitHub's Pages IPs — `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`.
-   - For a subdomain (`portfolio.sayemakhtar.dev`): a `CNAME` record pointing
+   - For a subdomain (`portfolio.developer.dev`): a `CNAME` record pointing
      to `<your-username>.github.io`.
 2. In your repo, edit `public/CNAME` (already in this project) and replace
-   the placeholder with your real domain, e.g. `sayemakhtar.dev`. Vite copies
+   the placeholder with your real domain, e.g. `developer.dev`. Vite copies
    anything in `public/` straight into `dist/`, so it ships automatically.
 3. Push — the next Actions run publishes it. GitHub Pages issues a free
    HTTPS certificate for the domain automatically (usually within an hour).
@@ -107,7 +107,7 @@ mapping itself is still free either way.
 Use a free subdomain-hosting service instead of buying a domain:
 
 - **[is-a.dev](https://www.is-a.dev/)** — free, popular with developers for
-  exactly this use case. You get e.g. `sayem.is-a.dev` by submitting a small
+  exactly this use case. You get e.g. `developer.is-a.dev` by submitting a small
   JSON file to their GitHub repo pointing at your `github.io` site. Fully
   free, no ads, no catch — it's a community-run project.
 - **[eu.org](https://nic.eu.org/)** — free domain registration if you don't
