@@ -1,4 +1,4 @@
-# Sayem Akhtar — Portfolio
+# Portfolio
 
 A React + Vite portfolio built from your resume, styled as an "API console" — the
 hero renders like a `curl` request/response and each section reads like a
